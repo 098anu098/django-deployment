@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'index' %}" class="navbar-brand">Homer</a></li>
+          <li><a href="{% url 'first_app:registration'%}" class="navbar-link">Register</a></li>
+          <li><a href="{% url 'admin:index' %}" class="navbar-link">Admin</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'user_logout'%}" class="navbar-link">Logout</a></li>
+          {%else%}
+            <li> <a href="{%url 'first_app:user_login' %}" class="navbar-link">Login</a></li>
+          {%endif%}
+        </ul>
+
+      </div>
+
+    </nav>
+    <div class="container">
+      {% block body_block%}
+      {%endblock%}
+
+    </div>
+  </body>
+</html>
